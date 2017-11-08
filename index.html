@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="context">
+
+<div id = "Json" class="myElements">
+  
+  <input type="text" id="myInputJSON"  placeholder="data in JSON" >
+
+  <button id="myBtnPaste" onclick="filling();"> Загрузить данные в формате JSON</button>
+
+  <button id="myBtnDownload"  onclick="downloadElements();"> Выгрузка в текст бокс </button>
+
+</div>
+
+<div id="add" class="myElements"> 
+  <input type="text" id="myInputName"   placeholder="name"  class="add">
+  <input type="text" id="myInputValue"  placeholder="value" class="add">
+
+
+  <button id="myBtnAdd"  onclick="addElement();"> Добавить данные  </button>
+
+</div>
+
+<div id="change" class="myElements">
+  <select id="mySelect1" >
+  </select>
+
+  <select id="mySelect2" >
+  </select>
+
+  <button id="myBtnChange"  onclick="сhangeElements();"> Поменять местами  </button>
+</div>
+
+<div id="move" class="myElements">
+  <select id="mySelect3" >
+  </select>
+  <button id="myBtnMove"  onclick="moveElement();"> Поместить выбранную строку в строку с выбраным  id  </button>
+</div>
+
+
+<div id="delete" class="myElements">
+  <button id="myBtnDelete"  onclick="deleteELements();"> Удаление выбранных строк из таблицы  </button>
+</div>
+
+</div>
+<table id="myTable">
+  <tr> <th>id</th> <th>Name</th> <th>Value</th> <th>  </tr>
+</table>
+
+
+<script src="script.js"></script>
+	  	
+</body>
+</html>

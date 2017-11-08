@@ -1,0 +1,20 @@
+
+.myElements{
+	margin: 5px;
+}
+
+.checkbox{
+	width: 25px;
+	height: 25px;
+}
+
+#context{
+	float: left;
+	
+}
+.add{
+	width:50px; 
+}
+#myInputJSON{
+	width: 400px
+}
