@@ -1,11 +1,45 @@
 var letter = '[{"name":"Bob", "value":"23yeas"},{"name":"Alex", "value":"24years"}]';
-var arr = JSON.parse(letter);
 var id = 0;
-go(arr);
 
-function filling() { //Заполнение таблицы при инициализации
+try{
+   var arr = JSON.parse(letter);
+
+   for (var i = 0; i < arr.length; i++){
+      
+       if ( (arr[i].name === undefined) || (arr[i].value === undefined) || ( Object.getOwnPropertyNames(arr[i]).length != 2 ) ) { throw new Error(); }
+   }
+
+   go(arr);
+}  catch(e){
+
+   alert("Некорректные данные");
+   
+}
+
+
+
+function filling() { //Заполнение табилцы в формате JSON
   var myInp = document.getElementById("myInputJSON"); 
-  var arr = JSON.parse(myInp.value);
+  
+  try{
+     var arr = JSON.parse(myInp.value);
+     
+
+     for (var i = 0; i < arr.length; i++){
+      
+       if ( (arr[i].name === undefined) || (arr[i].value === undefined) || ( Object.getOwnPropertyNames(arr[i]).length != 2 ) ) { throw new Error(); }
+     }
+     
+
+  }  catch(e){
+     
+     alert("Некорректные данные");
+
+     return;
+
+  }
+
+  
   go(arr);
 
 }
@@ -71,10 +105,30 @@ function go(arr) {  //Заполнение таблицы
 function deleteELements() { //удаление выбранных строчек в таблице
   var myCheckBoxs = document.getElementsByClassName("checkbox"); 
   
-  for (var i = 0; i < myCheckBoxs.length; i++){
-    if ( myCheckBoxs[i].checked ) {  myCheckBoxs[i].parentNode.remove(); i--;}  
-  }
+  var select1 = document.getElementById("mySelect1"); 
+  var select2 = document.getElementById("mySelect2");
+  var select3 = document.getElementById("mySelect3");
 
+  for (var i = 0; i < myCheckBoxs.length; i++){
+    if ( myCheckBoxs[i].checked ) { 
+      
+
+      for (var j = i+1; j < myCheckBoxs.length; j++){
+        myCheckBoxs[j].parentNode.childNodes[0].innerHTML = +myCheckBoxs[j].parentNode.childNodes[0].innerHTML - 1; //  --myCheckBoxs[j].parentNode.childNodes[0].innerHTML
+      }
+
+      id--;
+      
+      select1.lastChild.remove();
+      select2.lastChild.remove();
+      select3.lastChild.remove();
+
+      myCheckBoxs[i].parentNode.remove(); 
+
+      i--;
+    }  
+  }
+  
 }
 
 function downloadElements() { //выгрузка данных в инпут
