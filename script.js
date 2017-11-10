@@ -16,7 +16,43 @@ try{
    
 }
 
+function fillingFromFile() {
+  var control = document.getElementById("your-files");
+  var files = control.files;
 
+  var reader = new FileReader();
+
+  reader.onload = function(event) {
+    var contents = event.target.result;
+
+    try{
+     var arr = JSON.parse(contents);
+     
+
+     for (var i = 0; i < arr.length; i++){
+      
+       if ( (arr[i].name === undefined) || (arr[i].value === undefined) || ( Object.getOwnPropertyNames(arr[i]).length != 2 ) ) { throw new Error(); }
+     }
+     
+
+    }  catch(e){
+     
+      alert("Некорректные данные");
+
+      return;
+
+    }
+   go(arr);  
+  
+  };
+ 
+  reader.onerror = function(event) {
+    console.error("Файл не может быть прочитан! код " + event.target.error.code);
+  };
+ 
+  reader.readAsText(files[0]);
+
+}
 
 function filling() { //Заполнение табилцы в формате JSON
   var myInp = document.getElementById("myInputJSON"); 

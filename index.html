@@ -9,7 +9,8 @@
 
 <div id="context">
 
-<div id = "Json" class="myElements">
+<div id="Json" class="myElements">
+
   
   <input type="text" id="myInputJSON"  placeholder="data in JSON" >
 
@@ -18,6 +19,14 @@
   <button id="myBtnDownload"  onclick="downloadElements();"> Выгрузка в текст бокс </button>
 
 </div>
+
+<div id="file" class="myElements">
+   <input type="file" id="your-files" >
+   
+   <button id="myBtnFilePaste" onclick="fillingFromFile();"> Заполнить табилцу из файла</button>
+  
+</div>
+
 
 <div id="add" class="myElements"> 
   <input type="text" id="myInputName"   placeholder="name"  class="add">
