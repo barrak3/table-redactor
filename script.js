@@ -155,11 +155,14 @@ function deleteELements() { //удаление выбранных строчек
 
       id--;
       
-      select1.lastChild.remove();
-      select2.lastChild.remove();
-      select3.lastChild.remove();
+      select1.lastChild.parentNode.removeChild(select1.lastChild);
+      select2.lastChild.parentNode.removeChild(select2.lastChild);
+      select3.lastChild.parentNode.removeChild(select3.lastChild);
 
-      myCheckBoxs[i].parentNode.remove(); 
+    
+
+      myCheckBoxs[i].parentNode.parentNode.removeChild(myCheckBoxs[i].parentNode);
+ 
 
       i--;
     }  
